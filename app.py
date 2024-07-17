@@ -5,9 +5,8 @@ Created on Tue Jul 16 22:09:33 2024
 @author: PC
 """
 
-import pandas as pd
+
 import numpy as np
-from sklearn.metrics.pairwise import cosine_similarity
 import streamlit as st
 import pickle
 
