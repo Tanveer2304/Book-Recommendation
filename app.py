@@ -12,7 +12,7 @@ import streamlit as st
 import pickle
 
 
-popular_df = pickle.load(open(r"C:\Users\PC\data science\popular.pkl",'rb'))
+popular_df = pickle.load(open(r"popular.pkl",'rb'))
 pt = pickle.load(open(r"C:\Users\PC\data science\pt.pkl",'rb'))
 books = pickle.load(open(r"C:\Users\PC\data science\books.pkl",'rb'))
 similarity_scores = pickle.load(open(r"C:\Users\PC\data science\similarity_scores.pkl",'rb'))
