@@ -42,7 +42,7 @@ def main():
     st.header('Book Recommender System Using Machine Learning')
     st.subheader('Welcome All')
 
-    user_input = st.text_input("Enter the book name", "Harry Potter")  # Default example input
+    user_input = st.text_input("Enter the book name", "1984")  # Default example input
 
     if st.button("Recommend"):
         recommendations = recommend(user_input)
