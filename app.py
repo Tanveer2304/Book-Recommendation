@@ -7,7 +7,6 @@ Created on Tue Jul 16 22:09:33 2024
 
 
 import numpy as np
-
 import streamlit as st
 import pickle
 
