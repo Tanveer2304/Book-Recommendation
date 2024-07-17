@@ -21,22 +21,31 @@ def welcome():
     return "Welcome All"
 
 
-def recommend(user_input):
+def recommend(book_name):
+    # Check if book_name exists in pt.index
+    if book_name not in pt.index:
+        print(f"Book '{book_name}' not found.")
+        return []
     
-    index = np.where(pt.index==user_input)[0]
-    similar_items = sorted(list(enumerate(similarity_scores[index])),key=lambda x:x[1],reverse=True)[1:5]
+    # Find index of book_name in pt.index
+    index = np.where(pt.index == book_name)[0][0]
+    
+    # Fetch similar items based on similarity_scores
+    similar_items = sorted(list(enumerate(similarity_scores[index])), key=lambda x: x[1], reverse=True)[1:5]
     
     data = []
-    for i in similar_items:
+    for i, score in similar_items:
         item = []
-        temp_df = books[books['Book-Title'] == pt.index[i[0]]]
-        item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Title'].values))
-        item.extend(list(temp_df.drop_duplicates('Book-Title')['Book-Author'].values))
-        item.extend(list(temp_df.drop_duplicates('Book-Title')['Image-URL-M'].values))
+        # Find details of similar books in 'books' DataFrame
+        temp_df = books[books['Book-Title'] == pt.index[i]]
+        item.extend(temp_df.drop_duplicates('Book-Title')['Book-Title'].values)
+        item.extend(temp_df.drop_duplicates('Book-Title')['Book-Author'].values)
+        item.extend(temp_df.drop_duplicates('Book-Title')['Image-URL-M'].values)
         
         data.append(item)
     
     return data
+
 
 def main():
     st.header('Book Recommender System Using Machine Learning')
